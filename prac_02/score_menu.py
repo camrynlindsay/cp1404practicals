@@ -2,6 +2,8 @@ MENU = "(G)et Score\n(P)rint Result\n(S)how Stars\n(Q)uit"
 
 
 def main():
+    """This is a menu-driven program that interacts with the user's score in various ways"""
+    score = 0
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
@@ -20,6 +22,7 @@ def main():
 
 
 def get_valid_score():
+    """Get a valid score between 0 and 100"""
     score = int(input("Enter score: "))
     while score < 0 or score > 100:
         print("Invalid score")
