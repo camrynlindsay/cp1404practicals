@@ -5,7 +5,7 @@ Password checker "skeleton" code to help you get started
 
 MIN_LENGTH = 5
 MAX_LENGTH = 15
-SPECIAL_CHARS_REQUIRED = True
+SPECIAL_CHARS_REQUIRED = False
 SPECIAL_CHARACTERS = "!@#$%^&*()_-=+`~,./'[]<>?{}|\\"
 
 
@@ -36,13 +36,24 @@ def is_valid_password(password):
     count_digit = 0
     count_special = 0
     for char in password:
-        # TODO: count each kind of character (use str methods like isdigit)
-        pass
+        if password.isdigit():
+            count_digit += 1
+        elif password.lower():
+            count_lower += 1
+        elif password.upper():
+            count_upper += 1
+    if count_digit == 0:
+        return False
+    elif count_lower == 0:
+        return False
+    elif count_upper == 0:
+        return False
 
     # TODO: if any of the 'normal' counts are zero, return False
 
     # TODO: if special characters are required, then check the count of those
     # and return False if it's zero
+
 
     # if we get here (without returning False), then the password must be valid
     return True
