@@ -36,20 +36,16 @@ def is_valid_password(password):
     count_digit = 0
     count_special = 0
     for char in password:
-        if password.isdigit():
+        if char.isdigit():
             count_digit += 1
-        elif password.lower():
+        elif char.lower():
             count_lower += 1
-        elif password.upper():
+        elif char.upper():
             count_upper += 1
-    if count_digit == 0:
-        return False
-    elif count_lower == 0:
-        return False
-    elif count_upper == 0:
-        return False
 
     # TODO: if any of the 'normal' counts are zero, return False
+    if count_digit == 0 or count_lower == 0 or count_upper == 0:
+        return False
 
     # TODO: if special characters are required, then check the count of those
     # and return False if it's zero
