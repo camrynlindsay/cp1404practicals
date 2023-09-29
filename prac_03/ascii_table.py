@@ -3,13 +3,18 @@ UPPER_BOUND = 127
 
 
 def main():
-
-    character = input("Enter a character: ")
-
+    character = get_valid_character()
     number = get_valid_number()
-    ascii_code = convert_integer_to_ascii_code(number)
-    print(number)
-    print(ascii_code)
+    print(f"The ASCII code for {character} is {convert_string_to_ascii_code(character)}")
+    print(f"The character for {number} is {convert_integer_to_ascii_code(number)}")
+
+
+def get_valid_character():
+    character = input("Enter a character: ")
+    while character.isdigit():
+        print("Invalid input")
+        character = input("Enter a character: ")
+    return character
 
 
 def get_valid_number():
@@ -21,13 +26,13 @@ def get_valid_number():
 
 
 def convert_string_to_ascii_code(character):
-    ascii_code = ord(character)
-    return ascii_code
+    return ord(character)
+
 
 
 def convert_integer_to_ascii_code(number):
-    ascii_code = chr(number)
-    return ascii_code
+    return chr(number)
+
 
 
 main()
