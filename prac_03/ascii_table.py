@@ -4,8 +4,11 @@ UPPER_BOUND = 127
 
 def main():
 
-    character = str(input("Enter a character: "))
+    character = input("Enter a character: ")
     number = get_valid_number()
+    ascii_code = convert_integer_to_ascii_code(number)
+    print(number)
+    print(ascii_code)
 
 
 def get_valid_number():
@@ -16,12 +19,13 @@ def get_valid_number():
     return number
 
 
-def convert_string_to_ascii_code():
+def convert_string_to_ascii_code(character):
     pass
 
 
-def convert_integer_to_ascii_code():
-    pass
+def convert_integer_to_ascii_code(number):
+    ascii_code = chr(number)
+    return ascii_code
 
 
 main()
