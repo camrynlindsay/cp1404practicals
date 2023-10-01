@@ -7,7 +7,7 @@ A ValueError will occur when input other than integers (int) are entered.
 A ZeroDivisionError will occur when 0 is entered in the denominator (Math Error - undefined).
 3. Could you change the code to avoid the possibility of a ZeroDivisionError?
 The code can change to place an error-checker before the calculation to see if the denominator is equal to
-zero or not. Therefore, can delete the ZeroDivisionError exception because it will never be reached.
+zero or not. Therefore, can remove the ZeroDivisionError exception as it will never be reached.
 """
 
 try:

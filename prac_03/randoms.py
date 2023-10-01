@@ -5,7 +5,7 @@ import random
 # Smallest number that could be seen is 5, largest 20.
 
 # What did you see on line 2?
-# Random numbers between 3 and 9, however due to the third parameter (2), means it will go up in two's
+# Random numbers between 3 and 9, however due to the third parameter (2), it will go up in two's
 # so the only possible numbers are 3, 5 ,7, 9.
 # Smallest number that could be seen is 3, largest 9.
 # Line 2 can not produce a 4 because of the parameter (step) of 2,
