@@ -8,8 +8,8 @@ FILENAME = "subject_data.txt"
 
 def main():
     """Get subject data from a file and print out the contents."""
-    data = get_data()
-    print_data(data)
+    subject = get_data()
+    print_data(subject)
 
 
 def get_data():
