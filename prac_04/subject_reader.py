@@ -13,22 +13,22 @@ def main():
 
 
 def get_data():
-    """Read data from file formatted like: subject,lecturer,number of students."""
-    data = []
+    """Read subjects from file formatted like: subject,lecturer,number of students."""
+    subjects = []
     input_file = open(FILENAME)
     for line in input_file:
         line = line.strip()  # Remove the \n
-        parts = line.split(',')  # Separate the data into its parts
+        parts = line.split(',')  # Separate the subjects into its parts
         parts[2] = int(parts[2])  # Make the number an integer (ignore PyCharm's warning)
-        data.append(parts)
+        subjects.append(parts)
     input_file.close()
-    return data
+    return subjects
 
 
-def print_data(data):
+def print_data(subjects):
     """Display the subject details"""
-    for data in data:
-        print(f"{data[0]} is taught by {data[1]:12} and has {data[2]:3} students")
+    for subject in subjects:
+        print(f"{subject[0]} is taught by {subject[1]:12} and has {subject[2]:3} students")
 
 
 main()
