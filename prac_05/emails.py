@@ -6,13 +6,14 @@ Actual:  29 minutes
 
 
 def main():
-    """Ask the user for their email and print a dictionary of their name to email"""
+    """Ask the user for their email and print a dictionary of their name and email"""
     email_to_name = {}
+
     email = input("Email: ")
     while email != "":
         name = get_name_from_email(email)
-        confirmation = input(f"Is your name {name}? (Y/n) ")
-        if confirmation.upper() != "" and confirmation != "Y":
+        confirmation = input(f"Is your name {name}? (Y/n) ").upper()
+        if confirmation != "" and confirmation != "Y":
             name = input("Name: ")
         email_to_name[email] = name
         email = input("Email: ")
