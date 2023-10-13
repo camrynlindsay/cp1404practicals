@@ -6,7 +6,7 @@ Actual:   32 minutes
 
 word_to_count = {}
 
-text = input("Enter text: ").split()
+text = input("Text: ").split()
 for word in text:
     if word in word_to_count:
         word_to_count[word] += 1
@@ -17,4 +17,3 @@ words.sort()
 max_word_length = max(len(word) for word in word_to_count)
 for word in words:
     print(f"{word:{max_word_length}} : {word_to_count[word]}")
-
