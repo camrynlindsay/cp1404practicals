@@ -1,11 +1,11 @@
 # Basic list operations
 
 numbers = []
-number_of_numbers = 5
 
-for i in range(number_of_numbers):
-    number = int(input("Number: "))
+number = int(input(f"Number {len(numbers) + 1}: "))
+while number > -1:
     numbers.append(number)
+    number = int(input(f"Number {len(numbers) + 1}: "))
 
 print(f"The first number is {numbers[0]}")
 print(f"The last number is {numbers[-1]}")
