@@ -2,7 +2,7 @@ from guitar import Guitar
 
 
 def run_tests():
-    """Test if class Guitar methods work. """
+    """Test if class Guitar and methods work. """
     name = "Gibson L-5 CES"
     year = 1922
     cost = 16035.40
