@@ -1,6 +1,6 @@
 """
-Estimate: 90 minutes
-Actual: __ minutes  6 7 6
+Estimate: 70 minutes
+Actual: __ minutes  6 7 6 5
 """
 
 import datetime
@@ -25,7 +25,7 @@ def main():
         elif choice == "F":
             filter_projects()
         elif choice == "A":
-            add_new_project()
+            add_new_project(projects)
         elif choice == "U":
             update_project()
         else:
@@ -44,8 +44,9 @@ def load_projects():
         for line in in_file:
             line = line.strip()
             if line:
-                values = line.split('\t')
-                projects.append([values[0], values[1], int(values[2]), float(values[3]), int(values[4])])
+                parts = line.split('\t')
+                project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
+                projects.append(project)
     return projects
 
 
@@ -58,18 +59,30 @@ def save_projects(projects):
 
 
 def display_projects():
+    """"""
     pass
 
 
 def filter_projects():
+    """"""
     pass
 
 
-def add_new_project():
-    pass
+def add_new_project(projects):
+    """Add a new project to the list of projects."""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yyyy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    percentage = int(input("Percent complete: "))
+    project = Project(name, start_date, priority, cost_estimate, percentage)
+    projects.append(project)
+    return project
 
 
 def update_project():
+    """"""
     pass
 
 
