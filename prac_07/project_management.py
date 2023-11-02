@@ -1,15 +1,10 @@
 """
 Estimate: 90 minutes
-Actual: __ minutes  6
+Actual: __ minutes  6 7
 """
 
 import datetime
 from project import Project
-
-# date_string = input("Date (d/m/yyyy): ")  # e.g., "30/9/2022"
-# date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-# # print(f"That day is/was {date.strftime('%A')}")
-# print(date.strftime("%d/%m/%Y"))
 
 MENU = "(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects by date\n(A)dd new project\n" \
        "(U)pdate project\n(Q)uit"
@@ -20,7 +15,8 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            load_projects()
+            projects = load_projects()
+            print(f"{len(projects)} projects loaded.")
         elif choice == "S":
             save_projects()
         elif choice == "D":
@@ -39,7 +35,16 @@ def main():
 
 
 def load_projects():
-    pass
+    projects = []
+    filename = input("What file would you like to load your projects from: ")
+    with open(filename, "r") as in_file:
+        in_file.readline()
+        for line in in_file:
+            line = line.strip()
+            if line:
+                values = line.split('\t')
+                projects.append([values[0], values[1], int(values[2]), float(values[3]), int(values[4])])
+    return projects
 
 
 def save_projects():
