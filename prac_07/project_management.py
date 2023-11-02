@@ -1,6 +1,6 @@
 """
 Estimate: 90 minutes
-Actual: __ minutes  6 7
+Actual: __ minutes  6 7 6
 """
 
 import datetime
@@ -11,6 +11,7 @@ MENU = "(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects 
 
 
 def main():
+    """Program that keeps track of current and completed projects."""
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
@@ -18,7 +19,7 @@ def main():
             projects = load_projects()
             print(f"{len(projects)} projects loaded.")
         elif choice == "S":
-            save_projects()
+            save_projects(projects)
         elif choice == "D":
             display_projects()
         elif choice == "F":
@@ -31,10 +32,11 @@ def main():
             print("Invalid input.")
         print(MENU)
         choice = input(">>> ").upper()
-    print("Farewell.")
+    print("Thank you for using custom-built project management software.")
 
 
 def load_projects():
+    """Load projects from a file into a list of lists."""
     projects = []
     filename = input("What file would you like to load your projects from: ")
     with open(filename, "r") as in_file:
@@ -47,8 +49,12 @@ def load_projects():
     return projects
 
 
-def save_projects():
-    pass
+def save_projects(projects):
+    """Save projects into a designated file."""
+    filename = input("What file would you like to save your projects to: ")
+    with open(filename, "w") as output_file:
+        for project in projects:
+            print(",".join(project), file=output_file)
 
 
 def display_projects():
