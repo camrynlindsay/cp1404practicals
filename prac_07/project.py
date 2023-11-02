@@ -13,3 +13,7 @@ class Project:
         """Return the string representation of the class Project."""
         return f"{self.name}, start: {self.start_date}, priority {self.priority}, " \
                f"estimate: ${self.cost_estimate:.2f}, completion: {self.percentage}%"
+
+    def __lt__(self, other):
+        """Determine if the start date is less than another project's start date."""
+        return self.start_date < other.start_date
