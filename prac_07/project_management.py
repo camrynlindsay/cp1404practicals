@@ -1,6 +1,6 @@
 """
 Estimate: 70 minutes
-Actual: __ minutes  6 7 6 5
+Actual: __ minutes  35
 """
 
 import datetime
@@ -8,6 +8,8 @@ from project import Project
 
 MENU = "(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects by date\n(A)dd new project\n" \
        "(U)pdate project\n(Q)uit"
+PERCENTAGE_INDEX = 4
+PRIORITY_INDEX = 3
 
 
 def main():
@@ -27,7 +29,7 @@ def main():
         elif choice == "A":
             add_new_project(projects)
         elif choice == "U":
-            update_project()
+            update_project(projects)
         else:
             print("Invalid input.")
         print(MENU)
@@ -78,12 +80,19 @@ def add_new_project(projects):
     percentage = int(input("Percent complete: "))
     project = Project(name, start_date, priority, cost_estimate, percentage)
     projects.append(project)
-    return project
 
 
-def update_project():
-    """"""
-    pass
+def update_project(projects):
+    """Update the completion percentage of a particular project."""
+    for i, project in enumerate(projects, start=0):
+        print(f"{i} {project}")
+    choice = int(input("Project choice: "))
+    print(projects[choice])
+    new_percentage = int(input("New Percentage: "))
+    projects[choice][PERCENTAGE_INDEX] = new_percentage
+    new_priority = int(input("New Priority: "))
+    if new_priority != "":
+        projects[choice][PRIORITY_INDEX] = new_priority
 
 
 main()
