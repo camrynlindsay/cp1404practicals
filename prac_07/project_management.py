@@ -1,6 +1,6 @@
 """
 Estimate: 90 minutes
-Actual: __ minutes  76
+Actual: __ minutes  106
 """
 
 import datetime
@@ -10,18 +10,24 @@ MENU = "(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects 
        "(U)pdate project\n(Q)uit"
 PERCENTAGE_INDEX = 4
 PRIORITY_INDEX = 2
+DEFAULT_FILENAME = "projects.txt"
 
 
 def main():
     """Program that keeps track of current and completed projects."""
+    filename = DEFAULT_FILENAME
+    projects = load_projects(DEFAULT_FILENAME)
+
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            projects = load_projects()
-            print(f"{len(projects)} projects loaded.")
+            new_filename = input("What file would you like to load your projects from: ")
+            if filename != "":
+                filename = new_filename
+                projects = load_projects(filename)
         elif choice == "S":
-            save_projects(projects)
+            save_projects(projects, filename)
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
@@ -37,11 +43,10 @@ def main():
     print("Thank you for using custom-built project management software.")
 
 
-def load_projects():
+def load_projects(prompt):
     """Load projects from a file into a list of lists."""
     projects = []
-    filename = input("What file would you like to load your projects from: ")
-    with open(filename, "r") as in_file:
+    with open(prompt, "r") as in_file:
         in_file.readline()
         for line in in_file:
             line = line.strip()
@@ -52,9 +57,8 @@ def load_projects():
     return projects
 
 
-def save_projects(projects):
+def save_projects(projects, filename):
     """Save projects into a designated file."""
-    filename = input("What file would you like to save your projects to: ")
     with open(filename, "w") as output_file:
         for project in projects:
             print(",".join(project), file=output_file)
@@ -96,23 +100,23 @@ def add_new_project(projects):
     print("Let's add a new project")
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yyyy): ")
-    priority = get_valid_priority("Priority: ")
+    priority = get_valid_input("Priority: ")
     cost_estimate = get_valid_cost_estimate("Cost estimate: $")
-    percentage = get_valid_percentage("Percent complete: ")
+    percentage = get_valid_input("Percent complete: ")
     project = Project(name, start_date, priority, cost_estimate, percentage)
     projects.append(project)
 
 
-def get_valid_priority(prompt):
-    """Get a valid priority for a new project."""
+def get_valid_input(prompt):
+    """Get a valid input for a new project."""
     valid_input = False
     while not valid_input:
         try:
             user_input = int(input(f"{prompt}"))
-            if user_input > 0:
+            if user_input >= 0:
                 valid_input = True
             else:
-                print("Number must be > 0.")
+                print("Number must be > 0 or equal to 0.")
         except ValueError:
             print("Invalid input; enter a valid number.")
     return user_input  # Safe to ignore Pycharm warning
@@ -124,21 +128,6 @@ def get_valid_cost_estimate(prompt):
     while not valid_input:
         try:
             user_input = float(input(f"{prompt}"))
-            if user_input >= 0:
-                valid_input = True
-            else:
-                print("Number must be > 0 or equal to 0.")
-        except ValueError:
-            print("Invalid input; enter a valid number.")
-    return user_input  # Safe to ignore Pycharm warning
-
-
-def get_valid_percentage(prompt):
-    """Get a valid percentage for completion status."""
-    valid_input = False
-    while not valid_input:
-        try:
-            user_input = int(input(f"{prompt}"))
             if user_input >= 0:
                 valid_input = True
             else:
