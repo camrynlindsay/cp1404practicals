@@ -1,5 +1,5 @@
 class Project:
-    """Represent information about a project."""
+    """Represent a project class."""
 
     def __init__(self, name="", start_date="", priority=0, cost_estimate=0.0, percentage=0):
         """Initialise values about a project."""
