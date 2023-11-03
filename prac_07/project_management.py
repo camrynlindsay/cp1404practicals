@@ -1,6 +1,6 @@
 """
-Estimate: 70 minutes
-Actual: __ minutes  61
+Estimate: 90 minutes
+Actual: __ minutes  76
 """
 
 import datetime
@@ -96,11 +96,28 @@ def add_new_project(projects):
     print("Let's add a new project")
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yyyy): ")
-    priority = int(input("Priority: "))
+    priority = get_valid_priority("Priority: ")
     cost_estimate = float(input("Cost estimate: $"))
     percentage = int(input("Percent complete: "))
     project = Project(name, start_date, priority, cost_estimate, percentage)
     projects.append(project)
+
+
+def get_valid_priority(prompt):
+    """Get a valid input for priority from user."""
+    valid_input = False
+    while not valid_input:
+        try:
+            user_input = int(input(f"{prompt}"))
+            if user_input > 0:
+                valid_input = True
+            else:
+                print("Number must be > 0.")
+        except ValueError:
+            print("Invalid input; enter a valid number.")
+        except TypeError:
+            print("Invalid input; enter a valid number.")
+    return user_input  # Safe to ignore Pycharm warning
 
 
 def update_project(projects):
