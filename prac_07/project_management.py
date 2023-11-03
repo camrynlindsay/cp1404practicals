@@ -97,8 +97,8 @@ def add_new_project(projects):
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yyyy): ")
     priority = get_valid_priority("Priority: ")
-    cost_estimate = float(input("Cost estimate: $"))
-    percentage = int(input("Percent complete: "))
+    cost_estimate = get_valid_cost_estimate("Cost estimate: $")
+    percentage = get_valid_percentage("Percent complete: ")
     project = Project(name, start_date, priority, cost_estimate, percentage)
     projects.append(project)
 
@@ -126,6 +126,8 @@ def get_valid_cost_estimate(prompt):
             user_input = float(input(f"{prompt}"))
             if user_input >= 0:
                 valid_input = True
+            else:
+                print("Number must be > 0 or equal to 0.")
         except ValueError:
             print("Invalid input; enter a valid number.")
     return user_input  # Safe to ignore Pycharm warning
@@ -139,6 +141,8 @@ def get_valid_percentage(prompt):
             user_input = int(input(f"{prompt}"))
             if user_input >= 0:
                 valid_input = True
+            else:
+                print("Number must be > 0 or equal to 0.")
         except ValueError:
             print("Invalid input; enter a valid number.")
     return user_input  # Safe to ignore Pycharm warning
