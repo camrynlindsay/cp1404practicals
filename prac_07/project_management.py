@@ -1,6 +1,6 @@
 """
 Estimate: 70 minutes
-Actual: __ minutes  35
+Actual: __ minutes  61
 """
 
 import datetime
@@ -9,7 +9,7 @@ from project import Project
 MENU = "(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects by date\n(A)dd new project\n" \
        "(U)pdate project\n(Q)uit"
 PERCENTAGE_INDEX = 4
-PRIORITY_INDEX = 3
+PRIORITY_INDEX = 2
 
 
 def main():
@@ -23,9 +23,9 @@ def main():
         elif choice == "S":
             save_projects(projects)
         elif choice == "D":
-            display_projects()
+            display_projects(projects)
         elif choice == "F":
-            filter_projects()
+            filter_projects(projects)
         elif choice == "A":
             add_new_project(projects)
         elif choice == "U":
@@ -60,13 +60,30 @@ def save_projects(projects):
             print(",".join(project), file=output_file)
 
 
-def display_projects():
-    """"""
-    pass
+def display_projects(projects):
+    """Display all completed and uncompleted projects."""
+    completed_projects = []
+    uncompleted_projects = []
+    for project in projects:
+        if project.percentage == 100:
+            completed_projects.append(project)
+        else:
+            uncompleted_projects.append(project)
+
+    uncompleted_projects.sort(key=lambda project: project.priority)
+    completed_projects.sort(key=lambda project: project.priority)
+
+    print("Incomplete projects:")
+    for project in uncompleted_projects:
+        print(project)
+    print("Completed projects:")
+    for project in completed_projects:
+        print(project)
 
 
-def filter_projects():
-    """"""
+def filter_projects(projects):
+    """Show projects that start after a set date."""
+    filtered_date = input("Show projects that start after date (dd/mm/yyyy): ")
     pass
 
 
