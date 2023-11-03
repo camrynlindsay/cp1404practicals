@@ -104,7 +104,7 @@ def add_new_project(projects):
 
 
 def get_valid_priority(prompt):
-    """Get a valid input for priority from user."""
+    """Get a valid priority for a new project."""
     valid_input = False
     while not valid_input:
         try:
@@ -115,7 +115,31 @@ def get_valid_priority(prompt):
                 print("Number must be > 0.")
         except ValueError:
             print("Invalid input; enter a valid number.")
-        except TypeError:
+    return user_input  # Safe to ignore Pycharm warning
+
+
+def get_valid_cost_estimate(prompt):
+    """Get a valid cost estimate for a new project."""
+    valid_input = False
+    while not valid_input:
+        try:
+            user_input = float(input(f"{prompt}"))
+            if user_input >= 0:
+                valid_input = True
+        except ValueError:
+            print("Invalid input; enter a valid number.")
+    return user_input  # Safe to ignore Pycharm warning
+
+
+def get_valid_percentage(prompt):
+    """Get a valid percentage for completion status."""
+    valid_input = False
+    while not valid_input:
+        try:
+            user_input = int(input(f"{prompt}"))
+            if user_input >= 0:
+                valid_input = True
+        except ValueError:
             print("Invalid input; enter a valid number.")
     return user_input  # Safe to ignore Pycharm warning
 
