@@ -1,12 +1,13 @@
 """
 Estimate: 90 minutes
-Actual: __ minutes  106
+Actual: 118 minutes
 """
 
 import datetime
 from project import Project
 
-MENU = "(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects by date\n(A)dd new project\n" \
+MENU = "(L)oad projects\n(S)ave projects\n(D)isplay projects\n" \
+       "(F)ilter projects by date\n(A)dd new project\n" \
        "(U)pdate project\n(Q)uit"
 PERCENTAGE_INDEX = 4
 PRIORITY_INDEX = 2
@@ -46,7 +47,7 @@ def main():
 def load_projects(prompt):
     """Load projects from a file into a list of lists."""
     projects = []
-    with open(prompt, "r") as in_file:
+    with open(prompt, "r", encoding="UTF-8") as in_file:
         in_file.readline()
         for line in in_file:
             line = line.strip()
@@ -59,7 +60,7 @@ def load_projects(prompt):
 
 def save_projects(projects, filename):
     """Save projects into a designated file."""
-    with open(filename, "w") as output_file:
+    with open(filename, "w", encoding="UTF-8") as output_file:
         for project in projects:
             print(",".join(project), file=output_file)
 
