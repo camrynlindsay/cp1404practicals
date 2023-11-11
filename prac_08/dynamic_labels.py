@@ -11,22 +11,20 @@ class DynamicWidgetsApp(App):
     def __init__(self, **kwargs):
         """Construct main app."""
         super().__init__(**kwargs)
-        # basic data (model) example - dictionary of names: phone numbers
-        self.names = ["Bob", "Caitlyn", "Yone", "Cam"]
+        self.names = ["Bob", "Caitlyn", "Susan", "Cam", "Alex", "Bailey"]
 
     def build(self):
         """Build the Kivy GUI."""
         self.title = "Dynamic Widgets"
         self.root = Builder.load_file('dynamic_labels.kv')
         for name in self.names:
-            self.create_widgets()
+            self.create_label(name)
         return self.root
 
-    def create_widgets(self):
+    def create_label(self, name):
         """Create widgets from data and add them to the GUI."""
-        for name in self.names:
-            label = Label(text=name)
-            self.root.ids.entries_box.add_widget(label)
+        label = Label(text=name)
+        self.root.ids.main.add_widget(label)
 
 
 DynamicWidgetsApp().run()
