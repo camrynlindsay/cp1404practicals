@@ -1,7 +1,7 @@
 """
 Silver Service Taxi
 Estimate: 20 minutes
-Actual: __ minutes
+Actual: 26 minutes
 """
 
 from silver_service_taxi import SilverServiceTaxi
