@@ -17,4 +17,5 @@ class SilverServiceTaxi(Taxi):
 
     def get_fare(self):
         """Get the fare for a taxi trip."""
-        super().get_fare()
+        rounded_fare = round((super().get_fare() + self.flagfall) * 10) / 10
+        return rounded_fare
