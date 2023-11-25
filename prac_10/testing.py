@@ -47,12 +47,6 @@ def run_tests():
     assert test_car.fuel == 0
 
 
-# run_tests()
-
-# 3. Uncomment the following line and run the doctests
-doctest.testmod()
-
-
 def convert_phrase_to_sentence(phrase):
     """Turn a phrase into a sentence by capitalising the start and adding
     a full stop if it's needed.
@@ -67,3 +61,7 @@ def convert_phrase_to_sentence(phrase):
     if sentence[-1] != '.':
         sentence += '.'
     return sentence
+
+
+# run_tests()
+doctest.testmod()
