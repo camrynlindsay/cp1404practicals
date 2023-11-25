@@ -1,4 +1,4 @@
-import random
+import random  # Randint to determine reliability in drive method
 from prac_09.car import Car
 
 
